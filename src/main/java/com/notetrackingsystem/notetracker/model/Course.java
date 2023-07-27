@@ -27,17 +27,15 @@ public class Course {
     @MapKeyJoinColumn(name = "studentID")
     @Column(name = "grade")
     private Map<Student, Float> studentGrades;
-    private List<Student> students;
 
     public Course() {
     }
 
-    public Course(String courseName, List<Student> studentID, List<Instructor> instructorID, Map<Student, Float> studentGrades, List<Student> students) {
+    public Course(String courseName, List<Student> studentID, List<Instructor> instructorID, Map<Student, Float> studentGrades) {
         this.courseName = courseName;
         this.studentID = studentID;
         this.instructorID = instructorID;
         this.studentGrades = studentGrades;
-        this.students = students;
     }
 
     public long getCourseID() {
@@ -88,15 +86,6 @@ public class Course {
                 ", studentID=" + studentID +
                 ", instructorID=" + instructorID +
                 ", studentGrades=" + studentGrades +
-                ", students=" + students +
                 '}';
-    }
-
-    public List<Student> getStudents() {
-        return students;
-    }
-
-    public void setStudents(List<Student> students) {
-        this.students = students;
     }
 }

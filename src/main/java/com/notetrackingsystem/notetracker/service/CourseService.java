@@ -58,7 +58,7 @@ public class CourseService {
         Optional<Course> optionalCourse = courseRepository.findById(courseID);
         if (optionalCourse.isPresent()) {
             Course course = optionalCourse.get();
-            List<Student> studentList = course.getStudents();
+            List<Student> studentList = course.getStudentID();
 
             return studentList.stream()
                     .filter(student -> student.getGrade() >= 50)
@@ -72,7 +72,7 @@ public class CourseService {
         Optional<Course> optionalCourse = courseRepository.findById(courseID);
         if (optionalCourse.isPresent()) {
             Course course = optionalCourse.get();
-            List<Student> studentList = course.getStudents();
+            List<Student> studentList = course.getStudentID();
 
             return studentList.stream()
                     .filter(student -> student.getGrade() < 50)
@@ -86,7 +86,7 @@ public class CourseService {
         Optional<Course> optionalCourse = courseRepository.findById(courseID);
         if (optionalCourse.isPresent()) {
             Course course = optionalCourse.get();
-            List<Student> students = course.getStudents();
+            List<Student> students = course.getStudentID();
 
             float sum = 0;
             int studentCount = students.size();

@@ -74,7 +74,7 @@ public class StudentService {
             grades.add(student.getGrade());
 
             Course course = (Course) student.getCourseID();
-            List<Student> studentsEnrolledCourse = course.getStudents();
+            List<Student> studentsEnrolledCourse = course.getStudentID();
             for (Student s : studentsEnrolledCourse) {
                 grades.add(s.getGrade());
             }

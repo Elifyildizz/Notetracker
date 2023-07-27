@@ -2,11 +2,11 @@ package com.notetrackingsystem.notetracker.controller;
 
 import com.notetrackingsystem.notetracker.model.Student;
 import com.notetrackingsystem.notetracker.service.StudentService;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@CrossOrigin
 @RestController
 @RequestMapping(path = "api/v1/students")
 public class StudentController {
@@ -16,7 +16,7 @@ public class StudentController {
         this.studentService = studentService;
     }
 
-    @PostMapping("/saveStudent")
+    @PostMapping(value= "/saveStudent", consumes = MediaType.APPLICATION_JSON_VALUE)
     public Student saveStudent(@RequestBody Student student) {
         return studentService.saveStudent(student);
     }
