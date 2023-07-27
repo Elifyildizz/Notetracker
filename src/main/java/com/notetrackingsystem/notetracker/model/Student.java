@@ -2,7 +2,6 @@ package com.notetrackingsystem.notetracker.model;
 
 import jakarta.persistence.*;
 
-import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 
@@ -16,16 +15,10 @@ public class Student {
     private String name;
     @Column(name = "surname", nullable = false, length = 100)
     private String surname;
-    @Column(name = "grade1", nullable = false)
-    private double grade1;
-    @Column(name = "grade2", nullable = false)
-    private double grade2;
-    @Column(name = "grade3", nullable = false)
-    private double grade3;
-    @Column(name = "gpa", nullable = false)
-    private double gpa;
-
-
+    @Column(name = "grade", nullable = false)
+    private float grade;
+    @Column(name = "averageGrade", nullable = false)
+    private float averageGrade;
     @OneToMany
     @JoinColumn(name = "courseID")
     private List<Course> courseID;
@@ -33,22 +26,13 @@ public class Student {
     public Student() {
     }
 
-    public Student(String name, String surname, double grade1, double grade2, double grade3) {
-        this.name = name;
-        this.surname = surname;
-        this.grade1 = grade1;
-        this.grade2 = grade2;
-        this.grade3 = grade3;
-    }
-
-    public Student(long studentID, String name, String surname, double grade1, double grade2, double grade3, double gpa) {
+    public Student(long studentID, String name, String surname, float grade, float averageGrade, List<Course> courseID) {
         this.studentID = studentID;
         this.name = name;
         this.surname = surname;
-        this.grade1 = grade1;
-        this.grade2 = grade2;
-        this.grade3 = grade3;
-        this.gpa = gpa;
+        this.grade = grade;
+        this.averageGrade = averageGrade;
+        this.courseID = courseID;
     }
 
     public long getStudentID() {
@@ -75,39 +59,22 @@ public class Student {
         this.surname = surname;
     }
 
-    public double getGrade1() {
-        return grade1;
+    public float getGrade() {
+        return grade;
     }
 
-    public double getGrade2() {
-        return grade2;
+    public void setGrade(float grade) {
+        this.grade = grade;
     }
 
-    public double getGrade3() {
-        return grade3;
+    public float getAverageGrade() {
+        return averageGrade;
     }
 
-    public double calculateGPA() {
-        return (grade1 + grade2 + grade3) / 3.0;
+    public void setAverageGrade(float averageGrade) {
+        this.averageGrade = averageGrade;
     }
 
-    public void setGrade(double grade1) {
-        this.grade1 = grade1;
-        this.gpa = calculateGPA();
-    }
-
-    public void setGrade(double grade1, double grade2) {
-        this.grade1 = grade1;
-        this.grade2 = grade2;
-        this.gpa = calculateGPA();
-    }
-
-    public void setGrade(double grade1, double grade2, double grade3) {
-        this.grade1 = grade1;
-        this.grade2 = grade2;
-        this.grade3 = grade3;
-        this.gpa = calculateGPA();
-    }
     public List<Course> getCourseID() {
         return courseID;
     }
@@ -121,11 +88,11 @@ public class Student {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Student student = (Student) o;
-        return studentID == student.studentID && Double.compare(student.grade1, grade1) == 0 && Double.compare(student.grade2, grade2) == 0 && Double.compare(student.grade3, grade3) == 0 && Double.compare(student.gpa, gpa) == 0 && Objects.equals(name, student.name) && Objects.equals(surname, student.surname);
+        return studentID == student.studentID && Float.compare(student.grade, grade) == 0 && Float.compare(student.averageGrade, averageGrade) == 0 && Objects.equals(name, student.name) && Objects.equals(surname, student.surname) && Objects.equals(courseID, student.courseID);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(studentID, name, surname, grade1, grade2, grade3, gpa);
+        return Objects.hash(studentID, name, surname, grade, averageGrade, courseID);
     }
 }
