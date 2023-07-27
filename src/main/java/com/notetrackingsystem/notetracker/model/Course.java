@@ -82,10 +82,14 @@ public class Course {
 
     @Override
     public String toString() {
-        return courseName +
-                " " + courseID +
-                "\nGiven By" + instructorID +
-                "\nGrades:" + studentGrades;
+        return "Course{" +
+                "courseID=" + courseID +
+                ", courseName='" + courseName + '\'' +
+                ", studentID=" + studentID +
+                ", instructorID=" + instructorID +
+                ", studentGrades=" + studentGrades +
+                ", students=" + students +
+                '}';
     }
 
     public List<Student> getStudents() {

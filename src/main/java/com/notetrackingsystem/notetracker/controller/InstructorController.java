@@ -2,6 +2,7 @@ package com.notetrackingsystem.notetracker.controller;
 
 import com.notetrackingsystem.notetracker.model.Instructor;
 import com.notetrackingsystem.notetracker.service.InstructorService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 @CrossOrigin
@@ -10,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 public class InstructorController {
     private final InstructorService instructorService;
 
-
+    @Autowired
     public InstructorController(InstructorService instructorService) {
         this.instructorService = instructorService;
     }

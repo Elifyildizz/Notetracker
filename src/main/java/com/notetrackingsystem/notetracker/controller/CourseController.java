@@ -3,6 +3,7 @@ package com.notetrackingsystem.notetracker.controller;
 import com.notetrackingsystem.notetracker.model.Course;
 import com.notetrackingsystem.notetracker.model.Student;
 import com.notetrackingsystem.notetracker.service.CourseService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -13,6 +14,7 @@ import java.util.List;
 public class CourseController {
     private final CourseService courseService;
 
+    @Autowired
     public CourseController(CourseService courseService) {
         this.courseService = courseService;
     }

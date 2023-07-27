@@ -53,6 +53,16 @@ public class Instructor {
     }
 
     @Override
+    public String toString() {
+        return "Instructor{" +
+                "instructorID=" + instructorID +
+                ", name='" + name + '\'' +
+                ", surname='" + surname + '\'' +
+                ", courseID=" + courseID +
+                '}';
+    }
+
+    @Override
     public int hashCode() {
         return Objects.hash(name, surname);
     }

@@ -84,6 +84,18 @@ public class Student {
     }
 
     @Override
+    public String toString() {
+        return "Student{" +
+                "studentID=" + studentID +
+                ", name='" + name + '\'' +
+                ", surname='" + surname + '\'' +
+                ", grade=" + grade +
+                ", averageGrade=" + averageGrade +
+                ", courseID=" + courseID +
+                '}';
+    }
+
+    @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
